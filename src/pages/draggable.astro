@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+<script>
+  const box = document.querySelector(".box");
+  const items = document.querySelectorAll(".box-item");
+  let draggedHandle = null;
+  function onDrag() {
+    console.log("drag");
+  }
+  function onDragEnd() {
+    console.log("dragend");
+    this.classList.remove("dragging");
+  }
+  function onDragEnter() {
+    console.log("dragenter");
+    this.classList.add("dragged");
+  }
+  function onDragLeave() {
+    console.log("dragleave");
+    this.classList.remove("dragged");
+  }
+  function onDragOver(e) {
+    console.log("dragover");
+    e.preventDefault();
+    e.dataTransfer.effectAllowed = "move";
+  }
+  function onDragStart(e) {
+    console.log("dragstart");
+    draggedHandle = this;
+    e.dataTransfer.effectAllowed = "move";
+    this.classList.add("dragging");
+  }
+  function onDrop() {
+    console.log("drop");
+    const dropHandle = this;
+    dropHandle.classList.remove("dragged");
+  }
+  items.forEach((item) => {
+    item.addEventListener("drag", onDrag);
+    item.addEventListener("dragend", onDragEnd);
+    item.addEventListener("dragenter", onDragEnter);
+    item.addEventListener("dragleave", onDragLeave);
+    item.addEventListener("dragover", onDragOver);
+    item.addEventListener("dragstart", onDragStart);
+    item.addEventListener("drop", onDrop);
+  });
+</script>
+<Layout title="draggable">
+  <div class="wh-full flex-col-center gap-3">
+    <h1 class="text-3xl">Draggable Grid</h1>
+    <div class="box">
+      <div draggable="true" class="box-item">col1</div>
+      <div draggable="true" class="box-item">col2</div>
+      <div draggable="true" class="box-item">col3</div>
+      <div draggable="true" class="box-item">col4</div>
+      <div draggable="true" class="box-item">col5</div>
+      <div draggable="true" class="box-item">col6</div>
+      <div draggable="true" class="box-item">col7</div>
+      <div draggable="true" class="box-item">col8</div>
+      <div draggable="true" class="box-item">col9</div>
+    </div>
+  </div>
+</Layout>
+<style scoped>
+  .box {
+    display: grid;
+    grid: repeat(3, 100px) / repeat(3, 100px);
+    gap: 10px;
+  }
+  .box-item {
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    user-select: none;
+  }
+  .box-item:hover {
+    background: #000;
+    color: #fff;
+  }
+  .box-item.dragging {
+    opacity: 0.5;
+  }
+  .box-item.dragged {
+    border: 3px dashed #bbb;
+  }
+</style>

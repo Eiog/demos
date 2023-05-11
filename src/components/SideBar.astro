@@ -1,0 +1,35 @@
+---
+const path = Astro.url.pathname ?? "/";
+const exclude = ["404"];
+const rename = [{ o: "index", n: "Home" }];
+const list = (await Astro.glob("../pages/*.astro"))
+  .map((item) => {
+    const name = item.file.slice(0, -6).split("/").pop() ?? "";
+    const path = item.url===''?'/':item.url ?? "/";
+    return {
+      name: rename.find((r) => r.o === name)?.n ?? name,
+      path,
+    };
+  })
+  .filter((f) => !exclude.includes(f.name)).reverse()
+---
+
+<menu class="wh-full overscroll-y-auto">
+  <ul class="flex-col gap-1 p-3">
+    {
+      list.map((item) => {
+        return (
+          <li
+            class={`p-x-3 p-y-1 rounded-md text-black/60 hover:(bg-gray-1) ${
+              item.path === path ? "bg-gray-1" : "bg-transparent"
+            }`}
+          >
+            <a class="hover:(text-black)" href={item.path}>
+              {item.name}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</menu>

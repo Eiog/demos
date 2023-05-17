@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import Card from '~/components/Card.astro'
+const title = 'Draggable';
 ---
 <script>
   const box = document.querySelector(".box");
@@ -47,9 +48,8 @@ import Layout from "../layouts/Layout.astro";
     item.addEventListener("drop", onDrop);
   });
 </script>
-<Layout title="draggable">
-  <div class="wh-full flex-col-center gap-3">
-    <h1 class="text-3xl">Draggable Grid</h1>
+<Layout title={title}>
+  <Card title={title}>
     <div class="box">
       <div draggable="true" class="box-item">col1</div>
       <div draggable="true" class="box-item">col2</div>
@@ -61,7 +61,7 @@ import Layout from "../layouts/Layout.astro";
       <div draggable="true" class="box-item">col8</div>
       <div draggable="true" class="box-item">col9</div>
     </div>
-  </div>
+  </Card>
 </Layout>
 <style scoped>
   .box {

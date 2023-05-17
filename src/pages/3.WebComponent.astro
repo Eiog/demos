@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from '~/components/Card.astro'
+const title = 'WebComponent'
+---
+<script>
+  const name = "my-button";
+  const style = `
+    .my-button{
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:3px;
+      padding: 10px;
+      border-radius: 12px;
+      border:none;
+      outline: none;
+    }
+    .my-button:hover{
+      cursor: pointer;
+      background-color: #f1f1f1;
+    }
+    .my-button.success{
+      background-color: #67C23A;
+      color: #fff;
+    }
+  `;
+  const template = `
+    <button class="my-button">
+      <slot></slot>
+    </button>
+  `;
+  class MyButton extends HTMLElement {
+    constructor() {
+      super();
+      this.init();
+    }
+    //connectedCallback： 当 custom element首次被插入文档DOM时，被调用。
+    connectedCallback() {
+      console.log("connectedCallback.");
+      this.initProps();
+    }
+    //disconnectedCallback： 当 custom element从文档DOM中删除时，被调用。
+    disconnectedCallback() {
+      console.log("disconnectedCallback.");
+    }
+    //adoptedCallback： 当 custom element被移动到新的文档时，被调用。
+    adoptedCallback() {
+      console.log("adoptedCallback.");
+    }
+    //attributeChangedCallback： 当 custom element增加、删除、修改自身属性时，被调用。
+    attributeChangedCallback(name, oldValue, newValue) {
+      console.log(
+        "attributeChangedCallback. change " +
+          name +
+          "value is" +
+          newValue +
+          "old Value is" +
+          oldValue
+      );
+    }
+    init() {
+      const root = this.attachShadow({ mode: "open" });
+      root.appendChild(this.appendStyle());
+      const templateElement = document.createElement("template");
+      templateElement.innerHTML = template;
+      root.appendChild(templateElement.content.cloneNode(true));
+    }
+    initProps(){
+      const props = Object.values(this.attributes)
+      .map(m=>({key:m.name,value:m.value}))
+      .reduce<{[key:string]:unknown}>((acc, { key, value }) => {
+        acc[key] = value;
+        return acc;
+      }, {});
+
+      console.log(props);
+    }
+    appendStyle() {
+      var styleElement = document.createElement("style");
+      styleElement.id = name;
+      styleElement.innerHTML = style;
+      return styleElement;
+    }
+  }
+  customElements.define(name, MyButton);
+  const onClick = () => {
+    console.log("click");
+  };
+</script>
+<Layout title={title}>
+  <Card title={title}>
+    <div class="wh-full flex-center">
+      <my-button type="success" size="small" @click="()=>{}">
+        <span><i class="i-ri-download-line"></i></span>
+        <span>MyButton</span>
+      </my-button>
+    </div>
+  </Card>
+</Layout>

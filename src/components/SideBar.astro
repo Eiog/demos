@@ -1,7 +1,7 @@
 ---
 const path = Astro.url.pathname ?? "/";
-const exclude = ["404"];
-const rename = [{ o: "index", n: "Home" }];
+const exclude = ["404",'index'];
+const rename = [] as { o: string; n: string }[]
 const list = (await Astro.glob("../pages/*.astro"))
   .map((item) => {
     const name = item.file.slice(0, -6).split("/").pop() ?? "";
@@ -11,7 +11,7 @@ const list = (await Astro.glob("../pages/*.astro"))
       path,
     };
   })
-  .filter((f) => !exclude.includes(f.name)).reverse()
+  .filter((f) => !exclude.includes(f.name))
 ---
 
 <menu class="wh-full overscroll-y-auto">

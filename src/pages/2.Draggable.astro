@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from '~/components/Card.astro'
-const title = 'Draggable';
 ---
 <script>
   const box = document.querySelector(".box");
@@ -48,20 +46,18 @@ const title = 'Draggable';
     item.addEventListener("drop", onDrop);
   });
 </script>
-<Layout title={title}>
-  <Card title={title}>
-    <div class="box">
-      <div draggable="true" class="box-item">col1</div>
-      <div draggable="true" class="box-item">col2</div>
-      <div draggable="true" class="box-item">col3</div>
-      <div draggable="true" class="box-item">col4</div>
-      <div draggable="true" class="box-item">col5</div>
-      <div draggable="true" class="box-item">col6</div>
-      <div draggable="true" class="box-item">col7</div>
-      <div draggable="true" class="box-item">col8</div>
-      <div draggable="true" class="box-item">col9</div>
-    </div>
-  </Card>
+<Layout title="Draggable">
+  <div class="box">
+    <div draggable="true" class="box-item">col1</div>
+    <div draggable="true" class="box-item">col2</div>
+    <div draggable="true" class="box-item">col3</div>
+    <div draggable="true" class="box-item">col4</div>
+    <div draggable="true" class="box-item">col5</div>
+    <div draggable="true" class="box-item">col6</div>
+    <div draggable="true" class="box-item">col7</div>
+    <div draggable="true" class="box-item">col8</div>
+    <div draggable="true" class="box-item">col9</div>
+  </div>
 </Layout>
 <style scoped>
   .box {

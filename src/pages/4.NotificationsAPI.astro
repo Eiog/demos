@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '~/components/Card.astro'
-const title = 'Notification'
 ---
-<Layout title={title}>
-  <Card title={title}>
-    <p>Notification</p>
-  </Card>
+<script>
+  const push = () => {
+    if (!('Notification' in window)) {
+      alert('This browser does not support desktop notification')
+    } else if (Notification.permission === 'granted') {
+      new Notification('Hi there!')
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+          new Notification('Hi there!')
+        }
+      })
+    }
+  }
+  document.querySelector('button')!.addEventListener('click', push)
+</script>
+<Layout title="Notification">
+  <button class="bg-gray-1 rounded-md p-x-5 p-y-3 transition hover:(bg-gray-3)">点击推送</button>
 </Layout>

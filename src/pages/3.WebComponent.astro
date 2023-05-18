@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from '~/components/Card.astro'
-const title = 'WebComponent'
 ---
 <script>
   const name = "my-button";
@@ -89,13 +87,11 @@ const title = 'WebComponent'
     console.log("click");
   };
 </script>
-<Layout title={title}>
-  <Card title={title}>
-    <div class="wh-full flex-center">
-      <my-button type="success" size="small" @click="()=>{}">
-        <span><i class="i-ri-download-line"></i></span>
-        <span>MyButton</span>
-      </my-button>
-    </div>
-  </Card>
+<Layout title="WebComponent">
+  <div class="wh-full flex-center">
+    <my-button type="success" size="small" @click="()=>{}">
+      <span><i class="i-ri-download-line"></i></span>
+      <span>MyButton</span>
+    </my-button>
+  </div>
 </Layout>

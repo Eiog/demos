@@ -1,0 +1,17 @@
+---
+import Layout from '~/layouts/Layout.astro'
+---
+<script>
+  const canvas = document.querySelector('canvas')!
+  canvas.width = 400
+  canvas.height = 300
+  const ctx = canvas.getContext('2d')!
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+
+
+</script>
+<Layout title="Canvas">
+  <canvas class="border"></canvas>
+</Layout>

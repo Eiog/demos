@@ -1,9 +1,14 @@
 ---
+type List = {
+  name: string;
+  path: string;
+  children?: List[];
+};
 const path = Astro.url.pathname ?? "/";
 const exclude = ["404",'index'];
 const rename = [] as { o: string; n: string }[]
-const list = (await Astro.glob("../pages/*.astro"))
-  .map((item) => {
+const list = (await Astro.glob("../pages/**/*.astro"))
+  .map<List>((item) => {
     const name = item.file.slice(0, -6).split("/").pop() ?? "";
     const path = item.url===''?'/':item.url ?? "/";
     return {
@@ -12,6 +17,26 @@ const list = (await Astro.glob("../pages/*.astro"))
     };
   })
   .filter((f) => !exclude.includes(f.name))
+  .map(m=>{
+    const dir = m.path.match(/(?<=\/)[^\/]+(?=\/)/)
+    // if(dir&&dir[0]){
+    //   if(!m.children)
+    //     m.children = [{
+    //       name:m.name,
+    //       path:m.path
+    //     }]
+    //   else
+    //     m.children.push({
+    //       name:m.name,
+    //       path:m.path
+    //     })
+    //   m.path = `/${dir[0]}`
+    //   m.name = dir[0]
+    // }
+    return m
+  })
+  console.log(list);
+
 ---
 
 <menu class="wh-full overscroll-y-auto">

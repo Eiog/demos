@@ -15,8 +15,8 @@ import Layout from '~/layouts/Layout.astro'
       })
     }
   }
-  document.querySelector('button')!.addEventListener('click', push)
+  document.querySelector('#push')!.addEventListener('click', push)
 </script>
 <Layout title="Notification">
-  <button class="bg-gray-1 rounded-md p-x-5 p-y-3 transition hover:(bg-gray-3)">点击推送</button>
+  <button id="push" class="bg-gray-1 rounded-md p-x-5 p-y-3 transition hover:(bg-gray-3)">点击推送</button>
 </Layout>

@@ -2,8 +2,30 @@
 type List = {
   name: string;
   path: string;
+  type?: "group" | "link";
   children?: List[];
 };
+function foMart(list:List[]){
+  const res = [] as List[]
+  list.forEach(f=>{
+    const dir = f.path.match(/(?<=\/)[^\/]+(?=\/)/)
+    if(dir){
+      const dirName = dir[0]
+      const dirItem = res.find(r=>r.name===dirName)
+      if(dirItem){
+        dirItem.children?.push(f)
+      }else{
+        res.push({
+          name:dirName,
+          path:`/${dirName}`,
+          type:'group',
+          children:[f]
+        })
+      }
+    }
+  })
+  return res
+}
 const path = Astro.url.pathname ?? "/";
 const exclude = ["404",'index'];
 const rename = [] as { o: string; n: string }[]
@@ -14,44 +36,44 @@ const list = (await Astro.glob("../pages/**/*.astro"))
     return {
       name: rename.find((r) => r.o === name)?.n ?? name,
       path,
+      type:'link'
     };
   })
   .filter((f) => !exclude.includes(f.name))
-  .map(m=>{
-    const dir = m.path.match(/(?<=\/)[^\/]+(?=\/)/)
-    // if(dir&&dir[0]){
-    //   if(!m.children)
-    //     m.children = [{
-    //       name:m.name,
-    //       path:m.path
-    //     }]
-    //   else
-    //     m.children.push({
-    //       name:m.name,
-    //       path:m.path
-    //     })
-    //   m.path = `/${dir[0]}`
-    //   m.name = dir[0]
-    // }
-    return m
-  })
-  console.log(list);
+const listRes = foMart(list)
 
 ---
 
 <menu class="wh-full overscroll-y-auto">
   <ul class="flex-col gap-1 p-3">
     {
-      list.map((item) => {
+      listRes.map((item) => {
         return (
-          <li
-            class={`p-x-3 p-y-1 rounded-md text-black/60 hover:(bg-gray-1) ${
-              item.path === path ? "bg-gray-1" : "bg-transparent"
-            }`}
-          >
-            <a class="hover:(text-black)" href={item.path}>
-              {item.name}
-            </a>
+          <li>
+            {
+              item.type==='group'?
+              <div class="w-full h-8 p-x-3 flex-y-center justify-between rounded-md cursor-pointer hover:(bg-black/5)">
+                <span class="text-xl">{item.name}</span>
+                <i class="i-ri-arrow-right-s-line"></i>
+              </div>
+              <ul class="flex-col gap-1 p-l-5">
+                {
+                  item.children?.map(m=>{
+                    return(
+                      <li>
+                        <a class="hover:(text-red)" href={m.path}>
+                          {m.name}
+                        </a>
+                    </li>
+                    )
+                  })
+                }
+              </ul>
+              :
+              <a class="hover:(text-black)" href={item.path}>
+                {item.name}
+              </a>
+            }
           </li>
         );
       })

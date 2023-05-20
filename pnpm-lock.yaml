@@ -30,6 +30,9 @@ devDependencies:
   '@astrojs/node':
     specifier: ^5.1.1
     version: registry.npmmirror.com/@astrojs/node@5.1.1(astro@2.3.0)
+  '@astrojs/prism':
+    specifier: ^2.1.2
+    version: registry.npmmirror.com/@astrojs/prism@2.1.2
   '@astrojs/sitemap':
     specifier: ^1.2.2
     version: registry.npmmirror.com/@astrojs/sitemap@1.2.2
@@ -57,6 +60,9 @@ devDependencies:
   postcss-preset-env:
     specifier: ^8.3.1
     version: registry.npmmirror.com/postcss-preset-env@8.3.1(postcss@8.4.22)
+  shiki:
+    specifier: ^0.14.2
+    version: registry.npmmirror.com/shiki@0.14.2
   unocss:
     specifier: ^0.51.4
     version: registry.npmmirror.com/unocss@0.51.4(postcss@8.4.22)(rollup@2.79.1)(vite@4.2.1)
@@ -292,7 +298,7 @@ packages:
     peerDependencies:
       astro: ^2.3.0
     dependencies:
-      '@astrojs/prism': registry.npmmirror.com/@astrojs/prism@2.1.1
+      '@astrojs/prism': registry.npmmirror.com/@astrojs/prism@2.1.2
       astro: registry.npmmirror.com/astro@2.3.0
       github-slugger: registry.npmmirror.com/github-slugger@1.5.0
       import-meta-resolve: registry.npmmirror.com/import-meta-resolve@2.2.2
@@ -339,10 +345,10 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/@astrojs/prism@2.1.1:
-    resolution: {integrity: sha512-Gnwnlb1lGJzCQEg89r4/WqgfCGPNFC7Kuh2D/k289Cbdi/2PD7Lrdstz86y1itDvcb2ijiRqjqWnJ5rsfu/QOA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@astrojs/prism/-/prism-2.1.1.tgz}
+  registry.npmmirror.com/@astrojs/prism@2.1.2:
+    resolution: {integrity: sha512-3antim1gb34689GHRQFJ88JEo93HuZKQBnmxDT5W/nxiNz1p/iRxnCTEhIbJhqMOTRbbo5h2ldm5qSxx+TMFQA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@astrojs/prism/-/prism-2.1.2.tgz}
     name: '@astrojs/prism'
-    version: 2.1.1
+    version: 2.1.2
     engines: {node: '>=16.12.0'}
     dependencies:
       prismjs: registry.npmmirror.com/prismjs@1.29.0
@@ -3843,6 +3849,12 @@ packages:
     name: ansi-regex
     version: 6.0.1
     engines: {node: '>=12'}
+
+  registry.npmmirror.com/ansi-sequence-parser@1.1.0:
+    resolution: {integrity: sha512-lEm8mt52to2fT8GhciPCGeCXACSz2UwIN4X2e2LJSnZ5uAbn2/dsYdOmUXq0AtWS5cpAupysIneExOgH0Vd2TQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ansi-sequence-parser/-/ansi-sequence-parser-1.1.0.tgz}
+    name: ansi-sequence-parser
+    version: 1.1.0
+    dev: true
 
   registry.npmmirror.com/ansi-styles@2.2.1:
     resolution: {integrity: sha512-kmCevFghRiWM7HB5zTPULl4r9bVFSWjz62MhqizDGUrq2NWuNMQyuv4tHHoKJHs69M/MF64lEcHdYIocrdWQYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ansi-styles/-/ansi-styles-2.2.1.tgz}
@@ -10464,6 +10476,17 @@ packages:
       vscode-oniguruma: registry.npmmirror.com/vscode-oniguruma@1.7.0
       vscode-textmate: registry.npmmirror.com/vscode-textmate@6.0.0
 
+  registry.npmmirror.com/shiki@0.14.2:
+    resolution: {integrity: sha512-ltSZlSLOuSY0M0Y75KA+ieRaZ0Trf5Wl3gutE7jzLuIcWxLp5i/uEnLoQWNvgKXQ5OMpGkJnVMRLAuzjc0LJ2A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/shiki/-/shiki-0.14.2.tgz}
+    name: shiki
+    version: 0.14.2
+    dependencies:
+      ansi-sequence-parser: registry.npmmirror.com/ansi-sequence-parser@1.1.0
+      jsonc-parser: registry.npmmirror.com/jsonc-parser@3.2.0
+      vscode-oniguruma: registry.npmmirror.com/vscode-oniguruma@1.7.0
+      vscode-textmate: registry.npmmirror.com/vscode-textmate@8.0.0
+    dev: true
+
   registry.npmmirror.com/side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/side-channel/-/side-channel-1.0.4.tgz}
     name: side-channel
@@ -11870,6 +11893,12 @@ packages:
     resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-textmate/-/vscode-textmate-6.0.0.tgz}
     name: vscode-textmate
     version: 6.0.0
+
+  registry.npmmirror.com/vscode-textmate@8.0.0:
+    resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-textmate/-/vscode-textmate-8.0.0.tgz}
+    name: vscode-textmate
+    version: 8.0.0
+    dev: true
 
   registry.npmmirror.com/vscode-uri@2.1.2:
     resolution: {integrity: sha512-8TEXQxlldWAuIODdukIb+TR5s+9Ds40eSJrw+1iDDA9IFORPjMELarNQE3myz5XIkWWpdprmJjm1/SxMlWOC8A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-uri/-/vscode-uri-2.1.2.tgz}

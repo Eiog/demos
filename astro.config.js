@@ -7,10 +7,8 @@ import AutoImport from 'unplugin-auto-import/astro'
 import node from '@astrojs/node'
 import vercel from '@astrojs/vercel/edge'
 import netlify from '@astrojs/netlify/edge-functions'
-import image from '@astrojs/image'
 import sitemap from '@astrojs/sitemap'
 import robotsTxt from 'astro-robots-txt'
-import astroI18next from 'astro-i18next'
 import AstroPWA from '@vite-pwa/astro'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
@@ -33,13 +31,11 @@ export default defineConfig({
     vue(),
     solidJs(),
     UnoCSS({ injectReset: true }),
-    image(),
     // https://docs.astro.build/en/guides/integrations-guide/sitemap/
     sitemap(),
     // https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme
     robotsTxt(),
     // https://github.com/yassinedoghri/astro-i18next
-    astroI18next(),
     AutoImport({
       /* options */
       include: [

@@ -1,0 +1,20 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import Code from '~/components/Code.astro';
+const list = [1,2,3]
+---
+<script type="module">
+  import {SVG} from 'https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.1.2/+esm'
+  const draw = SVG().addTo('.demo').size(500, 500)
+  const rect = draw.rect(100, 100).attr({ fill: '#f06' })
+  rect.click(function() {
+  this.fill({ color: '#f2f' })
+})
+</script>
+<Layout title="SVG.js"
+home="https://svgjs.dev/docs/3.0/installation/"
+npm="https://www.npmjs.com/package/@svgdotjs/svg.js" github="https://github.com/svgdotjs/svg.js">
+  <div class="demo">
+
+  </div>
+</Layout>

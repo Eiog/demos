@@ -1,11 +1,12 @@
 ---
 export interface Props {
 	title?: string;
+  home?:string
   npm?:string,
   github?:string
 }
 
-const { title,npm,github } = Astro.props;
+const { title,home,npm,github } = Astro.props;
 ---
 <div class="wh-full flex-col gap-3">
   <div class="flex items-baseline gap-1">
@@ -14,9 +15,16 @@ const { title,npm,github } = Astro.props;
       {title}
     </h1>
     {
+      home?(
+        <a href={home} target="_blank" class="text-black/60 hover:(text-black) dark:(text-white/50 hover:(text-white/80))" >
+          <i class="i-ri-home-fill"></i>
+        </a>
+      ):null
+    }
+    {
       npm?(
-        <a href={npm} target="_blank" class="text-black/60 hover:(text-black) dark:(text-white/50 hover:(text-white/80))" >
-          <i class="i-ri-npmjs-fill"></i>
+        <a href={npm} target="_blank" class="text-red-6 hover:(text-red-8) dark:(text-red-8 hover:(text-red-7))" >
+          <i class="i-ri-npmjs-fill "></i>
         </a>
       ):null
     }
@@ -28,7 +36,7 @@ const { title,npm,github } = Astro.props;
       ):null
     }
   </div>
-  <div class="flex-1 border-t p-y-3 dark:(border-white/20)">
+  <div class="flex-1 border-t p-y-3 dark:(border-white/20) overflow-auto">
     <slot></slot>
   </div>
 </div>

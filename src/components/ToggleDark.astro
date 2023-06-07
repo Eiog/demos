@@ -1,21 +1,4 @@
 <script>
-    const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-      return 'light';
-  })();
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
-  } else {
-    document.documentElement.classList.add('dark');
-  }
-
-  window.localStorage.setItem('theme', theme!);
   const setDark = ()=>{
     document.documentElement.classList.add('dark');
     toggleDark.children.item(0)!.classList.remove('i-ri-sun-fill');
@@ -29,9 +12,6 @@
     localStorage.setItem("theme", 'light');
   }
   const toggleDark = document.querySelector('.toggle-dark')!
-  toggleDark.addEventListener('click',()=>{
-
-  })
   const handleToggleClick = () => {
     const isDark = document.documentElement.classList.contains("dark");
     if (isDark) {
@@ -40,7 +20,6 @@
       setDark();
     }
   }
-
   toggleDark.addEventListener('click', handleToggleClick);
 </script>
 <div class="cursor-pointer toggle-dark">

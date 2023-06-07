@@ -1,0 +1,19 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import Code from '~/components/Code.astro';
+---
+<script src="https://cdn.jsdelivr.net/npm/lax.js" ></script>
+<script>
+  window.onload = function () {
+    lax.init()
+    // Add a driver that we use to control our animations
+
+  }
+</script>
+<Layout title="Lax.js" npm="https://alexfox.dev/lax.js/" github="https://github.com/alexfoxy/lax.js">
+  <div class="wh-full relative overflow-auto">
+    <div class="w-full h-1000px">
+      <div class="box fixed left-1/2 top-1/2 bg-pink w-20 h-20"></div>
+    </div>
+  </div>
+</Layout>

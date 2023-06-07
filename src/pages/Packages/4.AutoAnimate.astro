@@ -1,0 +1,34 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import Code from '~/components/Code.astro';
+const list = [1,2,3]
+---
+<script type="module">
+  import autoAnimate from 'https://cdn.jsdelivr.net/npm/@formkit/auto-animate@1.0.0-beta.6/+esm'
+  const demoList = document.querySelector('.demo-list')
+  const demoItem = document.querySelectorAll('.demo-item')
+  if(demoList){
+    autoAnimate(demoList)
+  }
+  if(demoItem){
+    demoItem.forEach(f=>{
+      f.querySelector('button').addEventListener('click',()=>{
+        demoList.appendChild(f.cloneNode(true))
+      })
+    })
+  }
+</script>
+<Layout title="Lax.js" npm="https://alexfox.dev/lax.js/" github="https://github.com/alexfoxy/lax.js">
+  <div class="demo-list flex-col gap-3">
+    {
+      list.map(m=>{
+        return (
+          <div class="demo-item flex gap-3 text-xl bg-black/10 border">
+            <p>{m}</p>
+            <button>增加</button>
+          </div>
+        )
+      })
+    }
+  </div>
+</Layout>

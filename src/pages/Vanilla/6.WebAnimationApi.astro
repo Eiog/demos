@@ -1,0 +1,74 @@
+---
+import Layout from '~/layouts/Layout.astro'
+---
+<script>
+const wrap = document.querySelector('.wrap') as HTMLDivElement
+const ball = document.querySelector('.ball') as HTMLDivElement
+if(wrap&&ball){
+  const init = ()=>{
+  const x = wrap.clientWidth/2
+  const y = wrap.clientHeight/2
+  ball.style.transform = `translate(${x}px,${y}px)`
+  }
+  init()
+  const move = (x:number,y:number)=>{
+    const ballRect = ball.getBoundingClientRect()
+    const wrapRect = wrap.getBoundingClientRect()
+    const initX = ballRect.left-wrapRect.left
+    const initY = ballRect.top-wrapRect.top
+    const rad = Math.atan2(y-initY,x-initX)
+    const deg = rad*180/Math.PI
+    ball.getAnimations().forEach(f=>f.cancel())
+    ball.animate([
+      {
+        transform:`translate(${initX}px,${initY}px) rotate(${deg}deg)`,
+        easing:'ease-out'
+      },
+      {
+        transform:`translate(${initX}px,${initY}px) rotate(${deg}deg) scaleX(2)`,
+        offset:0.6,
+      },
+      {
+        transform:`translate(${initX}px,${initY}px) rotate(${deg}deg) scaleX(1.5)`,
+        offset:0.8,
+        easing:'ease-in'
+      },
+      {
+        transform:`translate(${x-ballRect.width/2}px,${y-ballRect.height/2}px)`
+      }
+    ],{
+      duration:500,
+      easing:'ease-in-out',
+      fill:'forwards'
+    })
+  }
+  wrap.addEventListener('click',(e:MouseEvent)=>{
+    const wrapRect = wrap.getBoundingClientRect()
+    const x = e.clientX-wrapRect.left
+    const y = e.clientY-wrapRect.top
+    let roundDom = document.querySelector('.round') as HTMLDivElement
+    const roundRect = roundDom.getBoundingClientRect()
+    roundDom.style.transform = `translate(${x-roundRect.width/2}px,${y-roundRect.height/2}px)`
+    if(roundDom){
+      roundDom.animate([
+        {
+          opacity:0
+        },
+        {
+          opacity:1
+        },
+      ],{
+        duration:500,
+      })
+    }
+    move(x,y)
+  })
+}
+
+</script>
+<Layout title="WebAnimationApi">
+  <div class="wrap wh-full bg-black/10 flex-col">
+    <div class="ball bg-pink w-10 h-10 rounded-full"></div>
+    <div class="round w-10 h-10 rounded-full bg-black/10 absolute opacity-0 "></div>
+  </div>
+</Layout>

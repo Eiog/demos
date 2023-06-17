@@ -1,0 +1,83 @@
+---
+import Layout from '~/layouts/Layout.astro'
+---
+<script>
+const audioEl = document.querySelector('audio') as HTMLAudioElement
+const canvasEl = document.querySelector('#audio-canvas') as HTMLCanvasElement
+function initCanvas(canvasEl:HTMLCanvasElement,x = 600, y = 600) {
+    canvasEl.width = x * devicePixelRatio;
+    canvasEl.height = y * devicePixelRatio;
+    const ctx = canvasEl.getContext("2d")!;
+    function draw(data: number[]) {
+      const r = 200;
+      const { x, y } = { x: canvasEl.width/2, y: canvasEl.height/2 };
+      const j = 360 / data.length;
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      for (var i = 0; i < data.length; i++) {
+        var value = data[i]/2;
+        ctx.beginPath();
+        ctx.lineWidth = j;
+        ctx.moveTo(x, y);
+        //R * cos (PI/180*一次旋转的角度数) ,-R * sin (PI/180*一次旋转的角度数)
+        ctx.lineTo(
+          Math.cos((i * j * Math.PI) / 180) * (r + value) + x,
+          -Math.sin((i * j * Math.PI) / 180) * (r + value) + y
+        );
+        ctx.stroke();
+      }
+      //画一个小圆，将线条覆盖
+      ctx.beginPath();
+      ctx.lineWidth = j;
+      ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+      ctx.fillStyle = "#fff";
+      ctx.stroke();
+      ctx.fill();
+    }
+    return {draw}
+  }
+const {draw} = initCanvas(canvasEl)
+let isInit = false
+let analyser= null as AnalyserNode|null
+let buffer = null as Uint8Array|null
+// navigator.mediaDevices.getDisplayMedia({audio:true}).then(stream=>{
+//   if(isInit) return
+//   const audioCtx = new AudioContext()
+//   analyser = audioCtx.createAnalyser()
+//   analyser.fftSize = 512
+//   buffer = new Uint8Array(analyser.frequencyBinCount)
+//   const source = audioCtx.createMediaStreamSource(stream)
+//   source.connect(analyser)
+//   // analyser.connect(audioCtx.destination)
+//   isInit = true
+// })
+audioEl.onplay = ()=>{
+  if(isInit) return
+  const audioCtx = new AudioContext()
+  analyser = audioCtx.createAnalyser()
+  analyser.fftSize = 512
+  buffer = new Uint8Array(analyser.frequencyBinCount)
+  const source = audioCtx.createMediaElementSource(audioEl)
+  source.connect(analyser)
+  analyser.connect(audioCtx.destination)
+  isInit = true
+}
+const update = ()=>{
+  requestAnimationFrame(update)
+  if(!isInit) return
+  analyser.getByteFrequencyData(buffer)
+  const offset = Math.floor(buffer.length*2/3)
+  const data = new Array(offset*2)
+  for(let i = 0;i<offset;i++){
+    data[i] = data[data.length-i-1] = buffer[i]
+  }
+  draw(data)
+  console.log(buffer);
+}
+update()
+</script>
+<Layout title="Canvas">
+  <div class="wh-full flex-col-center gap-10">
+    <canvas id="audio-canvas" class="border"></canvas>
+    <audio controls src="/许镜清 - 天府乐.mp3" ></audio>
+  </div>
+</Layout>

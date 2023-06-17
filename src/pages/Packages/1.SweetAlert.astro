@@ -2,6 +2,14 @@
 import Layout from '~/layouts/Layout.astro'
 ---
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  const btn = document.getElementById('btn')
+  if(btn){
+    btn.onclick = function () {
+    swal("Hello world!");
+  };
+  }
+</script>
 <Layout title="SweetAlert" npm="https://sweetalert.js.org/" github="https://github.com/t4t5/sweetalert">
-  <button onclick="swal('Hello world!')">Click me</button>
+  <button id="btn">Click me</button>
 </Layout>

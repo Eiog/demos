@@ -12,7 +12,7 @@ dependencies:
     version: registry.npmmirror.com/@unocss/reset@0.53.1
   astro:
     specifier: ^2.6.1
-    version: registry.npmmirror.com/astro@2.6.1
+    version: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
@@ -63,6 +63,9 @@ devDependencies:
   postcss-preset-env:
     specifier: ^8.4.2
     version: registry.npmmirror.com/postcss-preset-env@8.4.2(postcss@8.4.24)
+  sass:
+    specifier: ^1.63.3
+    version: registry.npmmirror.com/sass@1.63.3
   shiki:
     specifier: ^0.14.2
     version: registry.npmmirror.com/shiki@0.14.2
@@ -258,7 +261,7 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': registry.npmmirror.com/@altano/tiny-async-pool@1.0.2
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       http-cache-semantics: registry.npmmirror.com/http-cache-semantics@4.1.1
       image-size: registry.npmmirror.com/image-size@1.0.2
       kleur: registry.npmmirror.com/kleur@4.1.5
@@ -300,7 +303,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': registry.npmmirror.com/@astrojs/prism@2.1.2
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       github-slugger: registry.npmmirror.com/github-slugger@1.5.0
       import-meta-resolve: registry.npmmirror.com/import-meta-resolve@2.2.2
       rehype-raw: registry.npmmirror.com/rehype-raw@6.1.1
@@ -327,7 +330,7 @@ packages:
       '@astrojs/underscore-redirects': registry.npmmirror.com/@astrojs/underscore-redirects@0.1.0
       '@astrojs/webapi': registry.npmmirror.com/@astrojs/webapi@2.2.0
       '@netlify/functions': registry.npmmirror.com/@netlify/functions@1.6.0
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       esbuild: registry.npmmirror.com/esbuild@0.15.18
     dev: true
 
@@ -340,7 +343,7 @@ packages:
       astro: ^2.6.0
     dependencies:
       '@astrojs/webapi': registry.npmmirror.com/@astrojs/webapi@2.2.0
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       send: registry.npmmirror.com/send@0.18.0
       server-destroy: registry.npmmirror.com/server-destroy@1.0.1
     transitivePeerDependencies:
@@ -416,7 +419,7 @@ packages:
       '@astrojs/webapi': registry.npmmirror.com/@astrojs/webapi@2.2.0
       '@vercel/analytics': registry.npmmirror.com/@vercel/analytics@0.1.11(react@18.2.0)
       '@vercel/nft': registry.npmmirror.com/@vercel/nft@0.22.6
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       esbuild: registry.npmmirror.com/esbuild@0.17.19
       fast-glob: registry.npmmirror.com/fast-glob@3.2.12
       set-cookie-parser: registry.npmmirror.com/set-cookie-parser@2.6.0
@@ -441,7 +444,7 @@ packages:
       '@vitejs/plugin-vue-jsx': registry.npmmirror.com/@vitejs/plugin-vue-jsx@3.0.1(vite@4.3.9)(vue@3.3.4)
       '@vue/babel-plugin-jsx': registry.npmmirror.com/@vue/babel-plugin-jsx@1.1.1(@babel/core@7.22.1)
       '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc@3.3.4
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       vue: registry.npmmirror.com/vue@3.3.4
     transitivePeerDependencies:
       - '@babel/core'
@@ -3699,7 +3702,7 @@ packages:
       chokidar: registry.npmmirror.com/chokidar@3.5.3
       fast-glob: registry.npmmirror.com/fast-glob@3.2.12
       magic-string: registry.npmmirror.com/magic-string@0.30.0
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -3747,7 +3750,7 @@ packages:
       astro: ^1.6.0 || ^2.0.0
       vite-plugin-pwa: ^0.14.0
     dependencies:
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       vite-plugin-pwa: registry.npmmirror.com/vite-plugin-pwa@0.14.7(vite@4.3.9)(workbox-build@6.6.0)(workbox-window@6.6.0)
     dev: true
 
@@ -3764,7 +3767,7 @@ packages:
       '@babel/core': registry.npmmirror.com/@babel/core@7.22.1
       '@babel/plugin-transform-typescript': registry.npmmirror.com/@babel/plugin-transform-typescript@7.22.3(@babel/core@7.22.1)
       '@vue/babel-plugin-jsx': registry.npmmirror.com/@vue/babel-plugin-jsx@1.1.1(@babel/core@7.22.1)
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
       vue: registry.npmmirror.com/vue@3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -3780,7 +3783,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
       vue: registry.npmmirror.com/vue@3.3.4
     dev: false
 
@@ -4194,7 +4197,7 @@ packages:
     dependencies:
       '@proload/core': registry.npmmirror.com/@proload/core@0.3.3
       '@proload/plugin-tsm': registry.npmmirror.com/@proload/plugin-tsm@0.2.1(@proload/core@0.3.3)
-      astro: registry.npmmirror.com/astro@2.6.1
+      astro: registry.npmmirror.com/astro@2.6.1(sass@1.63.3)
       i18next: registry.npmmirror.com/i18next@22.5.1
       i18next-browser-languagedetector: registry.npmmirror.com/i18next-browser-languagedetector@7.0.2
       i18next-fs-backend: registry.npmmirror.com/i18next-fs-backend@2.1.2
@@ -4225,8 +4228,9 @@ packages:
       zod: registry.npmmirror.com/zod@3.21.4
     dev: true
 
-  registry.npmmirror.com/astro@2.6.1:
+  registry.npmmirror.com/astro@2.6.1(sass@1.63.3):
     resolution: {integrity: sha512-hQSMhUHMCVhUNa0xZfWnlVfz6MaRnfKtXHEBIA+rq1p3s9Z+rjKQmZq/Dk6G2vH1LMhudTojsBv7uMKumd+OnQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/astro/-/astro-2.6.1.tgz}
+    id: registry.npmmirror.com/astro/2.6.1
     name: astro
     version: 2.6.1
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
@@ -4290,7 +4294,7 @@ packages:
       typescript: registry.npmmirror.com/typescript@5.1.3
       unist-util-visit: registry.npmmirror.com/unist-util-visit@4.1.2
       vfile: registry.npmmirror.com/vfile@5.3.7
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
       vitefu: registry.npmmirror.com/vitefu@0.2.4(vite@4.3.9)
       yargs-parser: registry.npmmirror.com/yargs-parser@21.1.1
       zod: registry.npmmirror.com/zod@3.21.4
@@ -7455,6 +7459,11 @@ packages:
     dependencies:
       queue: registry.npmmirror.com/queue@6.0.2
     dev: true
+
+  registry.npmmirror.com/immutable@4.3.0:
+    resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/immutable/-/immutable-4.3.0.tgz}
+    name: immutable
+    version: 4.3.0
 
   registry.npmmirror.com/import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/import-fresh/-/import-fresh-3.3.0.tgz}
@@ -10636,6 +10645,17 @@ packages:
     dependencies:
       suf-log: registry.npmmirror.com/suf-log@2.5.3
 
+  registry.npmmirror.com/sass@1.63.3:
+    resolution: {integrity: sha512-ySdXN+DVpfwq49jG1+hmtDslYqpS7SkOR5GpF6o2bmb1RL/xS+wvPmegMvMywyfsmAV6p7TgwXYGrCZIFFbAHg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sass/-/sass-1.63.3.tgz}
+    name: sass
+    version: 1.63.3
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: registry.npmmirror.com/chokidar@3.5.3
+      immutable: registry.npmmirror.com/immutable@4.3.0
+      source-map-js: registry.npmmirror.com/source-map-js@1.0.2
+
   registry.npmmirror.com/sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sax/-/sax-1.2.4.tgz}
     name: sax
@@ -12037,7 +12057,7 @@ packages:
       fast-glob: registry.npmmirror.com/fast-glob@3.2.12
       pretty-bytes: registry.npmmirror.com/pretty-bytes@6.1.0
       rollup: registry.npmmirror.com/rollup@3.23.1
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
       workbox-build: registry.npmmirror.com/workbox-build@6.6.0
       workbox-window: registry.npmmirror.com/workbox-window@6.6.0
     transitivePeerDependencies:
@@ -12060,13 +12080,14 @@ packages:
       pathe: registry.npmmirror.com/pathe@0.2.0
       svg-baker: registry.npmmirror.com/svg-baker@1.7.0
       svgo: registry.npmmirror.com/svgo@2.8.0
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/vite@4.3.9:
+  registry.npmmirror.com/vite@4.3.9(sass@1.63.3):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-4.3.9.tgz}
+    id: registry.npmmirror.com/vite/4.3.9
     name: vite
     version: 4.3.9
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -12095,6 +12116,7 @@ packages:
       esbuild: registry.npmmirror.com/esbuild@0.17.19
       postcss: registry.npmmirror.com/postcss@8.4.24
       rollup: registry.npmmirror.com/rollup@3.23.1
+      sass: registry.npmmirror.com/sass@1.63.3
     optionalDependencies:
       fsevents: registry.npmmirror.com/fsevents@2.3.2
 
@@ -12109,7 +12131,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: registry.npmmirror.com/vite@4.3.9
+      vite: registry.npmmirror.com/vite@4.3.9(sass@1.63.3)
 
   registry.npmmirror.com/vscode-css-languageservice@6.2.6:
     resolution: {integrity: sha512-SA2WkeOecIpUiEbZnjOsP/fI5CRITZEiQGSHXKiDQDwLApfKcnLhZwMtOBbIifSzESVcQa7b/shX/nbnF4NoCg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-css-languageservice/-/vscode-css-languageservice-6.2.6.tgz}
